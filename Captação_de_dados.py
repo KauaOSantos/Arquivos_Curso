@@ -1,0 +1,15 @@
+
+nome=(input("Digite o seu Nome: "))
+cpf=int(input("Digite o seu CPF: "))
+rg=int(input("Digite o seu RG: "))
+dn=int(input("Digite a sua idade: "))
+sexo=(input("Digite o seu Sexo: "))
+peso=float(input("Digite o seu peso: "))
+ts=(input("Digite o seu Tipo sanguíneo: "))
+renda=(input("Digite a sua renda: "))
+endereço=(input("Digite o seu endereço: "))
+tel=(input("Digite o seu telefone: "))
+cidade=(input("Digite a sua Cidade: "))
+estado=(input("Digite o seu estado: "))
+
+print ("\n",nome,"\n",cpf,"\n",rg,"\n",dn,"\n",sexo,"\n",peso,"\n",ts,"\n",renda,"\n",endereço,"\n",tel,"\n",cidade,"\n",estado)
