@@ -1,0 +1,1 @@
+from Herança import *

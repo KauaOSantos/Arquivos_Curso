@@ -80,7 +80,6 @@ a2=[88, 81, 82, 83, 88, 85, 88, 86]
 a2.pop()
 print (a2)
 
-
 # Acrescenta um elemento na posição desejada 
 listas = [1,2]
 listas.extend([3,4])

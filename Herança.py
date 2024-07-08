@@ -27,3 +27,18 @@ class Aluno(Pessoa):
         super().relatorio()
         print("Mensalidade:",self.mensalidade)
         print("----------------------------------")
+
+
+class Professor(Pessoa):
+    def __init__(self, salario, nome, idade, endereco, cidade, estado):
+        super().__init__(nome, idade, endereco, cidade, estado)
+        self.salario = salario
+        print("----------------------------------")
+        print("Seja bem vindo querido professor !!!")
+        super().relatorio()
+        print("Salário...:",self.salario)
+        print("----------------------------------")
+
+
+x = Professor("1,200.00", "Ederson", "22", "Aracaju", "Campo Grande", "MS")
+y = Aluno("200.00", "José", "17", "Afonso Pena", "Dourados", "MS")
