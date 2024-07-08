@@ -1,92 +1,57 @@
+class Produto:
+    def __init__(self, codigo, nome, preco):
+        self.codigo = codigo
+        self.nome = nome
+        self.preco = preco
+
 class LojaTenis:
-    def __init__(self, cadastro, alteracao, relatorio, sair):
-        self.cadastro=cadastro
-        self.alteracao=alteracao
-        self.relatorio=relatorio
-        self.sair=sair
-    
-def menu():   
-    print("\n1 - Cadastro\n2 - Alterar cadastro\n3 - Relatório de cadastro\n4 - Sair")
-        
+    def __init__(self):
+        self.produtos = [] 
 
-def escolher_opcao():
-    while True:
-        escolha = input("\nEscolha uma opção: ")
-        if len(escolha) == 1 and escolha.isdigit(): # Verifica se a escolha tem dígito numérico
-            return int(escolha)
-        else:
-            print("Por favor, digite uma opção válida com 1 dígito.")
+    def cadastrar_produto(self):
+        codigo = input("Digite o código do produto: ")
+        nome = input("Digite o nome do produto: ")
+        preco = float(input("Digite o preço do produto: "))
+        produto = Produto(codigo, nome, preco)
+        self.produtos.append(produto)
+        print(f"Produto {nome} cadastrado com sucesso!")
 
-
-def nome():
-    while True:
-        nome = input("Digite seu nome: ").title().strip() 
-        if nome.replace(" ", "").isalpha():
-            LojaTenis
-            break
-        else:
-            print("Por favor, digite apenas letras.")
-
-
-def cpf():
-    while True:
-        try:
-            cpf = input("Digite seu CPF (11 digitos): ")
-            if len(cpf) == 11 and cpf.isdigit(): 
-               cpf in LojaTenis
-               break
-            else:
-                print("Por favor, digite um CPF válido com 11 dígitos numéricos.")
-        except ValueError:
-            print("Por favor, digite apenas números para o CPF.")
-
-
-def tel():       
-    while True:
-        try:
-            tel = input("Digite seu telefone (11 dígitos): ")
-            if len(tel) == 11 and tel.isdigit():  
-                tel in LojaTenis
+    def alterar_produto(self):
+        codigo = input("Digite o código do produto que deseja alterar: ")
+        produto_encontrado = False
+        for produto in self.produtos:
+            if produto.codigo == codigo:
+                novo_nome = input("Digite o novo nome do produto: ")
+                novo_preco = float(input("Digite o novo preço do produto: R$ "))
+                produto.nome = novo_nome
+                produto.preco = novo_preco
+                print(f"Produto {codigo} alterado com sucesso!")
+                produto_encontrado = True
                 break
-            else:
-                print("Por favor, digite um número de telefone válido com 11 dígitos numéricos.")
-        except ValueError:
-            print("Por favor, digite apenas números para o telefone.")
+        
+        if not produto_encontrado:
+            print("Produto não encontrado!")
 
-def alterar():
-    opcao = input("Digite o CPF do cliente a ser alterado: ")
-    for cpf in LojaTenis:
-        if cpf.get('cpf') == cpf:  
-            print("O que você deseja alterar?")
-            print("1 - Nome")
-            print("2 - CPF")
-            print("3 - Telefone")
+    def relatorio_produtos(self):
+        print("\nRelatório de Produtos:")
+        for produto in self.produtos:
+            print(f"Código: {produto.codigo}, Nome: {produto.nome}, Preço: R${produto.preco}")
 
-        elif opcao == '1':
-            nome()
-            ['nome'] = cad_pessoal['nome'] 
-
-        else:
-            print("Opção inválida.")
-            print("Cliente alterado com sucesso.")
-'''
-        elif opcao == '1':
-            tel()
-            pessoa['Nome'] = cad_pessoal['telefone']  # Atualiza o telefone do cliente encontrada
-        elif opcao == '5':
-            email()
-            pessoa['email'] = cad_pessoal['email']  # Atualiza o email do cliente encontrada
-        else:
-            print("Opção inválida.")
-        print("Cliente alterado com sucesso.")
-
-def relatorio(self):
-        print(f" Nome:{self.nome} \n Cpf: {self.cpf}\n Telefone: {self.telefone}")'''
-    # cadastro = input("")
-    #     def alterar(self,botao):
-    #     if botao=="+":
-    #         print("Aumentar canal")
-    #     elif botao=="-":
-    #         print("Diminuir canal")
-    #     else: 
-    #         print("Valor Inválido")
+    def menu(self):
+        while True:
+            print("\n1 - Cadastro\n2 - Alterar cadastro\n3 - Relatório de cadastro\n4 - Sair")
+            try:
+                opcao = int(input("Escolha uma opção: "))
+                if opcao == 1:
+                    self.cadastrar_produto()
+                elif opcao == 2:
+                    self.alterar_produto()
+                elif opcao == 3:
+                    self.relatorio_produtos()
+                elif opcao == 4:
+                    print("Programa encerrado")
+                    break
+                else:
+                    print("Opção inválida! Digite um número de 1 a 4.")
+            except ValueError:
+                print("Erro: Digite um número válido para a opção.")
