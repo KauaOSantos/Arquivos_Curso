@@ -1,5 +1,5 @@
 #from Atividade_avaliativa import *
-from Rascunhos import *
+from Atividade_avaliativa import *
 if __name__ == "__main__":
-    i = PC()
+    i = PC = ()
     i.menu()

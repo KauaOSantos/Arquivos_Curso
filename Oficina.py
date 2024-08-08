@@ -196,6 +196,3 @@ def main():    #Função principal que controla o fluxo do programa
             break  # Encerra o loop e finaliza o programa
         else:
             print("Opção inválida. Por favor, escolha uma opção válida.")
-
-# if __name__ == "__main__":
-#     main()  # Inicia a execução do programa

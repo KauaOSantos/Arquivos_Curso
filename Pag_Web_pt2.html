@@ -1,0 +1,52 @@
+<!DOCTYPE html> <!-- Definindo o tipo do documento HTML5 -->
+<html lang="pt-br"> <!--Definindo o idioma do documento -->
+<head>
+    <meta charset="UFT-8">
+</head>
+<body>
+    <h1> Formululário Legal </h1>
+    <form oninput="exibirNome()">
+        <label for="Nome">Nome:</label>
+        <input type="text" id="nome" required>
+    </form>
+    <p id="resultado"></p>
+    </body>
+    </html>
+
+    <form oninput="exibirIdade()">
+        <label for="Idade">Idade:</label>
+        <input int="text" id="idade" required>
+    </form>
+    <p id="resultado"></p>
+    </html>
+
+    <html>
+
+    <body>
+    
+        <h2>Sexo</h2>
+        <input type="checkbox" id="Masculino" name="checkbox" onclick="togglecheckbox(this)">
+        <label for="Masculino"> Masculino</label><br>
+    
+        <input type="checkbox" id="Feminino" name="checkbox" onclick="togglecheckbox(this)">
+        <label for="Feminino"> Feminino</label><br>
+    
+        <script>
+            function togglecheckbox(checkbox) {
+                if (checkbox.checked) {
+                    document.querySelectorAll('input[type="checkbox"]').forEach(function (el){
+                        if (el !== checkbox) el.checked = false;
+                    });
+                }
+            }
+        </script>
+    </body>
+    
+    </html>
+
+    <form oninput="exibirCpf()">
+        <label for="Cpf">Cpf:</label>
+        <input type="text" id="cpf" required>
+    </form>
+    <p id="resultado"></p>
+    </html>
