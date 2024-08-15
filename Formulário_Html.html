@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <script>
+        function calcularIdade(dataNascimento) {
+            const hoje = new Date();
+            const nascimento = new Date(dataNascimento);
+            let idade = hoje.getFullYear() - nascimento.getFullYear();
+            const m = hoje.getMonth() - nascimento.getMonth();
+            if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+                idade--;
+            }
+            return idade;
+        }
+
+        function cadastrar() {
+            const nome = document.getElementById('nome').value;
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const idade = calcularIdade(dataNascimento);
+            const altura = document.getElementById('altura').value;
+            const cidade = document.getElementById('cidade').value;
+            const estado = document.getElementById('estado').value;
+            const telefone = document.getElementById('telefone').value;
+
+            const dados = `Nome: ${nome}\nData de Nascimento: ${dataNascimento}\nIdade: ${idade}\nAltura: ${altura}\nCidade: ${cidade}\nEstado: ${estado}\nTelefone: ${telefone}\n`;
+
+            const blob = new Blob([dados], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cadastro.txt';
+            a.click();
+
+            URL.revokeObjectURL(url);
+
+            alert(`${nome}, idade ${idade} cadastrada com sucesso!`);
+        }
+
+        function mostrarImagem(event) {
+            const imagemSelecionada = event.target.files[0];
+            if (imagemSelecionada) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgElement = document.getElementById('imagem-preview');
+                    imgElement.src = e.target.result;
+                    imgElement.style.display = 'block'; // Exibe a imagem
+                }
+                reader.readAsDataURL(imagemSelecionada);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Formulário de Cadastro</h1>
+    <form onsubmit="event.preventDefault(); cadastrar();">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br><br>
+
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="date" id="dataNascimento" name="dataNascimento" required>
+        <br><br>
+
+        <label for="altura">Altura:</label>
+        <input type="text" id="altura" name="altura" required>
+        <br><br>
+
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" required>
+        <br><br>
+
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required>
+        <br><br>
+
+        <label for="telefone">Número de Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required>
+        <br><br>
+
+        <label for="imagem">Selecione uma imagem:</label>
+        <input type="file" id="imagem" name="imagem" accept="image/*" onchange="mostrarImagem(event)">
+        <br><br>
+
+        <img id="imagem-preview" src="" alt="Pré-visualização da Imagem" style="display:none; max-width: 200px; max-height: 200px;">
+        <br><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>
